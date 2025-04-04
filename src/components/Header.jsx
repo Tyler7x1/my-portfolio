@@ -38,7 +38,6 @@ export default function Header() {
 
     return (
         <>
-            {/* Desktop Navbar */}
             <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full px-4 hidden md:block">
                 <nav
                     className="navbar mx-auto max-w-max flex items-center justify-center 
