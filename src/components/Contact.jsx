@@ -6,14 +6,11 @@ export default function Contact() {
         <section
             className="relative flex flex-col justify-center items-center min-h-screen text-white text-center px-6 transition-colors duration-300"
         >
-            {/* Blurred Glass Background */}
             <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30 dark:bg-gray-900/30"></div>
 
-            {/* Content Container */}
             <div className="relative z-10 w-full max-w-4xl p-12 bg-gray-900/50 dark:bg-white/50 rounded-2xl shadow-2xl backdrop-blur-lg flex flex-col items-center">
                 <h2 className="text-4xl font-bold text-blue-400 dark:text-blue-600">Let's Connect</h2>
 
-                {/* Contact Links Box */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

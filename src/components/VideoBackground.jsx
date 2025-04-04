@@ -6,7 +6,7 @@ export default function VideoBackground() {
                 <source src="/BG.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <div className="absolute inset-0 bg-black/50"></div> {/* Overlay */}
+            <div className="absolute inset-0 bg-black/50"></div>
         </div>
     );
 }

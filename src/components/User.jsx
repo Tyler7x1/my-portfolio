@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import FadeIn from "./FadeIn"; // Adjust the path if needed
+import FadeIn from "./FadeIn";
 
 export default function User() {
     const [nameText, setNameText] = useState('');
