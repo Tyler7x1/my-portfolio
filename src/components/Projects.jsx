@@ -36,7 +36,7 @@ const projects = [
     },
     {
         name: "FloodSense",
-        description: "A MERN web app that displays real-time IoT sensor data.",
+        description: "A web app that displays real-time IoT sensor data.",
         technologies: ["Node.js", "Express.js", "MongoDB", "EJS", "Arduino (C++)"],
         repo: "https://github.com/Tyler7x1/FloodSense",
         image: floodSenseImage,

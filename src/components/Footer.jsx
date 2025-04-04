@@ -5,7 +5,7 @@ export default function Footer() {
 
             <div className="relative z-10 max-w-md w-full">
                 <p className="text-sm sm:text-base">
-                    Created by <span className="font-semibold text-blue-600">Jayprakash Malik</span>
+                    Created by <a href="https://github.com/Tyler7x1"><span className="font-semibold text-blue-600">Jayprakash Malik</span></a>
                 </p>
                 <p className="mt-1 text-xs sm:text-sm text-gray-400 dark:text-gray-600">
                     © {new Date().getFullYear()} All rights reserved.
