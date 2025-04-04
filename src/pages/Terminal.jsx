@@ -11,7 +11,7 @@ export default function MyTerminal() {
     whoami: {
       description: 'Displays user info',
       usage: 'whoami',
-      fn: () => `Jayprakash Malik - Backend Developer. He loves to work with Node.js, Express.js, MongoDB`
+      fn: () => `Jayprakash Malik - Backend Developer. He loves to work with Node.js, Express.js and MongoDB. Currently pursuing Bachelor of Computer Applications (BCA) degree in Presidency University, Bengaluru, Karnataka, India`
     },
     email: {
       description: 'Send an Email to Jayprakash',

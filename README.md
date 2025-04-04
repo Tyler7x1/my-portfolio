@@ -28,7 +28,7 @@ Welcome to the source code for my **developer portfolio website**, built using *
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/portfolio.git
+git clone https://github.com/Tyler7x1/my-portfolio.git
 cd portfolio
 ```
 
@@ -48,7 +48,7 @@ npm run dev
 
 🔗 Live Demo
 
-    https://your-portfolio-link.com
+    https://jayprakash-malik.vercel.app/
 
 📄 License
 
