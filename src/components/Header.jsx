@@ -1,4 +1,4 @@
-import '../css/navbar.css';
+import "../css/navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -13,20 +13,21 @@ export default function Header() {
 
     return (
         <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full px-4 sm:px-0">
-            <nav className="navbar mx-auto max-w-fit sm:max-w-max flex flex-wrap items-center justify-center
-                bg-gray-800/50 backdrop-blur-md text-white px-4 sm:px-6 py-2 sm:py-3 
-                rounded-full shadow-lg border border-gray-700/40 transition-colors duration-300"
+            <nav
+                className="navbar mx-auto max-w-fit sm:max-w-max flex flex-wrap items-center justify-center 
+                bg-gray-900/80 backdrop-blur-md text-white px-5 sm:px-8 py-2 sm:py-3 
+                rounded-full shadow-lg border border-gray-700/50 transition-all duration-300"
             >
-                <ul className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm md:text-base font-medium">
+                <ul className="flex flex-wrap justify-center items-center gap-3 sm:gap-5 md:gap-7 text-sm sm:text-base md:text-lg font-semibold">
                     {["home", "about", "projects", "contact"].map((item, index) => (
                         <li key={index}>
                             <Link
                                 to={item === "home" ? "/" : `/${item}`}
-                                className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-full transition backdrop-blur-lg 
-                                    font-bold whitespace-nowrap ${
-                                    active === item 
-                                        ? "bg-blue-500/60 text-white shadow-md"
-                                        : "hover:text-blue-400"
+                                className={`px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all duration-300
+                                    font-bold whitespace-nowrap tracking-wide ${
+                                    active === item
+                                        ? "bg-blue-500 text-white shadow-lg scale-105"
+                                        : "hover:text-blue-400 hover:bg-gray-700/50"
                                 }`}
                             >
                                 {item.charAt(0).toUpperCase() + item.slice(1)}
