@@ -87,11 +87,11 @@ export default function Projects() {
     }, [smoothAutoScroll]);
 
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center py-16 px-6 transition-colors duration-300">
+        <section className="relative min-h-screen flex flex-col items-center justify-center py-16 px-4 sm:px-6 transition-colors duration-300">
             <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30"></div>
 
             <div className="relative z-10 max-w-7xl w-full">
-                <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-blue-600 mb-6">
                     My Projects
                 </h2>
 
@@ -102,33 +102,37 @@ export default function Projects() {
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                     >
-                        <div className="scroll-content flex gap-6">
+                        <div className="scroll-content flex gap-4 sm:gap-6">
                             {duplicatedProjects.map((project, index) => (
                                 <FadeIn key={`${project.name}-${index}`} delay={index * 0.2}>
-                                    <div className="project-card w-[300px] min-w-[300px] bg-gray-800/30 backdrop-blur-lg rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 relative flex flex-col">
+                                    <div className="project-card 
+                                        w-[150px] min-w-[150px] sm:w-[220px] sm:min-w-[220px] md:w-[300px] md:min-w-[300px]
+                                        bg-gray-800/30 backdrop-blur-lg rounded-lg shadow-lg p-4 sm:p-5 md:p-6 
+                                        hover:shadow-xl transition duration-300 relative flex flex-col"
+                                    >
                                         {!project.completed && (
-                                            <span className="absolute top-3 right-3 bg-yellow-500 text-gray-900 text-xs font-bold px-2 py-1 rounded">
+                                            <span className="absolute top-2 right-2 bg-yellow-500 text-gray-900 text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded">
                                                 🚧 In Progress
                                             </span>
                                         )}
 
-                                        <h3 className="text-2xl font-semibold text-white mb-3">
+                                        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-2 sm:mb-3">
                                             {project.name}
                                         </h3>
 
-                                        <p className="text-gray-300 flex-grow whitespace-normal">
+                                        <p className="text-gray-300 text-xs sm:text-sm flex-grow">
                                             {project.description}
                                         </p>
 
-                                        <div className="mt-4">
-                                            <h4 className="text-sm font-semibold text-gray-400 mb-2">
+                                        <div className="mt-3 sm:mt-4">
+                                            <h4 className="text-xs sm:text-sm font-semibold text-gray-400 mb-1 sm:mb-2">
                                                 Technologies Used:
                                             </h4>
-                                            <div className="flex flex-wrap gap-3">
+                                            <div className="flex flex-wrap gap-2 sm:gap-3">
                                                 {project.technologies.map((tech, i) => (
                                                     <div key={i} title={tech}>
                                                         {techIcons[tech] || (
-                                                            <span className="text-xs">{tech}</span>
+                                                            <span className="text-[10px] sm:text-xs">{tech}</span>
                                                         )}
                                                     </div>
                                                 ))}
@@ -139,7 +143,7 @@ export default function Projects() {
                                             href={project.repo}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="mt-4 inline-block text-blue-400 hover:text-blue-300 hover:underline transition"
+                                            className="mt-3 sm:mt-4 inline-block text-blue-400 hover:text-blue-300 hover:underline transition text-xs sm:text-sm"
                                         >
                                             View Repository →
                                         </a>
