@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import FadeIn from "./FadeIn"; // Adjust the path if needed
 
 export default function User() {
     const [nameText, setNameText] = useState('');
@@ -64,35 +65,36 @@ export default function User() {
             id="home" 
             className="relative flex flex-col items-center justify-center min-h-screen text-white text-center px-6 transition-colors duration-300"
         >
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-                Hi! I'm <span className="text-blue-400">{nameText}</span>
-                <span className="animate-pulse">|</span>
-            </h1>
+            <FadeIn>
+                <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+                    Hi! I'm <span className="text-blue-400">{nameText}</span>
+                    <span className="animate-pulse">|</span>
+                </h1>
 
-            <h3 className="text-lg md:text-2xl mt-4 text-gray-300 font-medium">
-                A <span className="text-blue-300 font-semibold">{professionText}</span>
-                <span className="animate-pulse">|</span>
-            </h3>
+                <h3 className="text-lg md:text-2xl mt-4 text-gray-300 font-medium">
+                    A <span className="text-blue-300 font-semibold">{professionText}</span>
+                    <span className="animate-pulse">|</span>
+                </h3>
 
-            <p className="mt-4 text-gray-400 text-sm md:text-base">
-                I'm a 3rd-year student at  
-                <a 
-                    href="https://presidencyuniversity.in/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:underline hover:text-blue-300 transition"
+                <p className="mt-4 text-gray-400 text-sm md:text-base">
+                    I'm a 3rd-year student at  
+                    <a 
+                        href="https://presidencyuniversity.in/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:underline hover:text-blue-300 transition"
+                    >
+                        {" "}Presidency University
+                    </a>, Bengaluru.
+                </p>
+
+                <button 
+                    onClick={handleDownload} 
+                    className="mt-6 px-6 py-3 bg-blue-500/50 dark:bg-blue-600/50 backdrop-blur-lg text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600/50 dark:hover:bg-blue-500/50 transition duration-300"
                 >
-                    {" "}Presidency University
-                </a>, Bengaluru.
-            </p>
-
-            <button 
-    onClick={handleDownload} 
-    className="mt-6 px-6 py-3 bg-blue-500/50 dark:bg-blue-600/50 backdrop-blur-lg text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600/50 dark:hover:bg-blue-500/50 transition duration-300"
->
-    Download Resume
-</button>
-
+                    Download Resume
+                </button>
+            </FadeIn>
         </section>
     );
 }

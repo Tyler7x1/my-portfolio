@@ -1,32 +1,6 @@
-import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
-    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-    const [status, setStatus] = useState(null);
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus("sending");
-
-        const response = await fetch("https://your-backend.onrender.com/send-email", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-        });
-
-        const result = await response.json();
-        if (result.success) {
-            setStatus("success");
-            setFormData({ name: "", email: "", message: "" });
-        } else {
-            setStatus("error");
-        }
-    };
-
     return (
         <section
             id="contact"
@@ -35,59 +9,46 @@ export default function Contact() {
             {/* Blurred Glass Background */}
             <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30 dark:bg-gray-900/30"></div>
 
-            {/* Content */}
-            <div className="relative z-10 w-full max-w-lg p-8 bg-gray-900/50 dark:bg-white/50 rounded-lg shadow-lg backdrop-blur-lg">
-                <h2 className="text-3xl font-bold text-blue-400 dark:text-blue-600">Let's Connect</h2>
-                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full p-3 rounded bg-gray-700 dark:bg-gray-200 text-white dark:text-gray-900 focus:outline-none focus:ring focus:ring-blue-400"
-                        required
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Your Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full p-3 rounded bg-gray-700 dark:bg-gray-200 text-white dark:text-gray-900 focus:outline-none focus:ring focus:ring-blue-400"
-                        required
-                    />
-                    <textarea
-                        name="message"
-                        rows="4"
-                        placeholder="Your Message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="w-full p-3 rounded bg-gray-700 dark:bg-gray-200 text-white dark:text-gray-900 focus:outline-none focus:ring focus:ring-blue-400"
-                        required
-                    ></textarea>
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-500/50 dark:bg-blue-600/50 backdrop-blur-lg text-white font-bold py-3 rounded transition duration-300 hover:bg-blue-600/50 dark:hover:bg-blue-500/50"
-                        disabled={status === "sending"}
-                    >
-                        {status === "sending" ? "Sending..." : "Send Message"}
-                    </button>
+            {/* Content Container */}
+            <div className="relative z-10 w-full max-w-4xl p-12 bg-gray-900/50 dark:bg-white/50 rounded-2xl shadow-2xl backdrop-blur-lg flex flex-col items-center">
+                <h2 className="text-4xl font-bold text-blue-400 dark:text-blue-600">Let's Connect</h2>
 
-                </form>
-
-                {status === "success" && <p className="text-green-400 text-center mt-4">Message sent successfully!</p>}
-                {status === "error" && <p className="text-red-400 text-center mt-4">Failed to send message.</p>}
-            </div>
-
-            {/* Social Links Section */}
-            <div className="relative z-10 mt-8 flex space-x-6">
-                <a href="https://github.com/Tyler7x1" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition text-2xl">
-                    <i className="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/jayprakash-malik/" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition text-2xl">
-                    <i className="fa-brands fa-linkedin"></i>
-                </a>
+                {/* Contact Links Box */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="mt-10 w-full max-w-2xl bg-white/10 dark:bg-black/10 rounded-xl backdrop-blur-md p-8 border border-white/20 flex flex-col items-center space-y-6"
+                >
+                    <p className="text-xl text-gray-300 dark:text-gray-800 font-medium">Reach me at:</p>
+                    <div className="flex justify-center space-x-10 text-3xl">
+                        <a
+                            href="mailto:dev.jayh4@gmail.com"
+                            className="text-gray-300 dark:text-gray-800 hover:text-red-400 dark:hover:text-red-500 transition transform hover:scale-110"
+                            title="Gmail"
+                        >
+                            <i className="fa-solid fa-envelope"></i>
+                        </a>
+                        <a
+                            href="https://github.com/Tyler7x1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 dark:text-gray-800 hover:text-white dark:hover:text-black transition transform hover:scale-110"
+                            title="GitHub"
+                        >
+                            <i className="fa-brands fa-github"></i>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/jayprakash-malik/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 dark:text-gray-800 hover:text-blue-400 dark:hover:text-blue-600 transition transform hover:scale-110"
+                            title="LinkedIn"
+                        >
+                            <i className="fa-brands fa-linkedin"></i>
+                        </a>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );
