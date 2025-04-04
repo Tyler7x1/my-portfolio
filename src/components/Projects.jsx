@@ -106,11 +106,10 @@ export default function Projects() {
                             {duplicatedProjects.map((project, index) => (
                                 <FadeIn key={`${project.name}-${index}`} delay={index * 0.2}>
                                     <div className="project-card 
-    w-[90vw] min-w-[90vw] sm:w-[220px] sm:min-w-[220px] md:w-[300px] md:min-w-[300px]
+    w-[45vw] min-w-[45vw] sm:w-[220px] sm:min-w-[220px] md:w-[300px] md:min-w-[300px]
     bg-gray-800/30 backdrop-blur-lg rounded-lg shadow-lg p-4 sm:p-5 md:p-6 
     hover:shadow-xl transition duration-300 relative flex flex-col"
->
-
+                                    >
                                         {!project.completed && (
                                             <span className="absolute top-2 right-2 bg-yellow-500 text-gray-900 text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded">
                                                 🚧 In Progress
