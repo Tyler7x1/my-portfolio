@@ -18,8 +18,7 @@ export default function About() {
                         <span className="text-blue-500 font-semibold"> Backend Developer</span> aiming to specialize in building 
                         scalable and efficient server-side applications.  
                         I love working with  
-                        <span className="text-blue-600 font-semibold"> Node.js, Express.js, MongoDB,</span> and  
-                        <span className="text-blue-600 font-semibold"> React</span>.
+                        <span className="text-blue-600 font-semibold"> Node.js, Express.js,</span> and <span className="text-blue-600 font-semibold"> MongoDB</span>.
                     </p>
 
                     <p className="mt-6 text-gray-400 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose">

@@ -80,6 +80,11 @@ export default function User() {
                         </a>, Bengaluru.
                     </p>
 
+                    <p className="mt-6 text-gray-300 text-sm sm:text-base px-2 sm:px-6">
+                        If you're a fellow backend developer, check out the{" "}
+                        <span className="text-blue-400 font-semibold">Terminal</span> Section and type <code className="bg-gray-800 text-yellow-300 px-1 rounded">help</code> to get started.
+                    </p>
+
                     <button 
                         onClick={handleDownload} 
                         className="mt-6 px-6 py-3 bg-blue-500/50 backdrop-blur-lg text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600/50 transition duration-300"

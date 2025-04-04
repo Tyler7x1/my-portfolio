@@ -12,6 +12,7 @@
   "dependencies": {
     "framer-motion": "^12.6.3",
     "react": "^19.0.0",
+    "react-console-emulator": "^5.0.2",
     "react-dom": "^19.0.0",
     "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^7.4.1",
