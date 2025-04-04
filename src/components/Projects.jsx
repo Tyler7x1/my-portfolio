@@ -92,7 +92,10 @@ export default function Projects() {
     const currentProjects = projects.slice(start, end);
 
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center py-16 px-4 sm:px-6 transition-colors duration-300">
+        <section
+            id="projects"
+            className="relative min-h-screen flex flex-col items-center justify-center pt-32 sm:pt-36 pb-16 px-4 sm:px-6 scroll-mt-20 transition-colors duration-300"
+        >
             <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30"></div>
 
             <div className="relative z-10 max-w-6xl w-full">
