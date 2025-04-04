@@ -2,19 +2,16 @@ import { useState, useEffect, useMemo } from 'react';
 import FadeIn from "./FadeIn";
 
 export default function User() {
-    const [nameText, setNameText] = useState('');
     const [professionText, setProfessionText] = useState('');
-    const [nameIndex, setNameIndex] = useState(0);
     const [professionIndex, setProfessionIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [charIndex, setCharIndex] = useState(0);
 
-    const nameOptions = useMemo(() => ['Jayprakash Malik', 'Jay', 'Jayprakash'], []);
     const professionOptions = useMemo(() => [
-        'Backend Developer', 
-        'Video Gamer', 
-        'Node.js Developer', 
-        'MERN Stack Developer'
+        'Backend Developer.', 
+        'Video Gamer.', 
+        'Node.js Developer.', 
+        'MERN Stack Developer.'
     ], []);
 
     const typingSpeed = 100;
@@ -22,24 +19,20 @@ export default function User() {
     const pauseBetweenWords = 1000;
 
     useEffect(() => {
-        const currentName = nameOptions[nameIndex];
         const currentProfession = professionOptions[professionIndex];
 
         const timer = setTimeout(() => {
             if (isDeleting) {
                 if (charIndex > 0) {
                     setCharIndex((prev) => prev - 1);
-                    setNameText(currentName.substring(0, charIndex - 1));
                     setProfessionText(currentProfession.substring(0, charIndex - 1));
                 } else {
                     setIsDeleting(false);
-                    setNameIndex((prev) => (prev + 1) % nameOptions.length);
                     setProfessionIndex((prev) => (prev + 1) % professionOptions.length);
                 }
             } else {
-                if (charIndex < currentName.length || charIndex < currentProfession.length) {
+                if (charIndex < currentProfession.length) {
                     setCharIndex((prev) => prev + 1);
-                    setNameText(currentName.substring(0, charIndex + 1));
                     setProfessionText(currentProfession.substring(0, charIndex + 1));
                 } else {
                     setTimeout(() => setIsDeleting(true), pauseBetweenWords);
@@ -48,7 +41,7 @@ export default function User() {
         }, isDeleting ? deletingSpeed : typingSpeed);
 
         return () => clearTimeout(timer);
-    }, [charIndex, isDeleting, nameIndex, professionIndex, nameOptions, professionOptions]);
+    }, [charIndex, isDeleting, professionIndex, professionOptions]);
 
     const handleDownload = () => {
         const resumeUrl = "/Jayprakash_Malik.pdf";
@@ -62,37 +55,38 @@ export default function User() {
 
     return (
         <section 
-            className="relative flex flex-col items-center justify-center min-h-screen text-white text-center px-6 transition-colors duration-300"
+            className="relative flex flex-col items-center justify-center min-h-screen text-white text-center px-4 sm:px-6 md:px-8 transition-colors duration-300"
         >
             <FadeIn>
-                <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-                    Hi! I'm <span className="text-blue-400">{nameText}</span>
-                    <span className="animate-pulse">|</span>
-                </h1>
+                <div className="max-w-screen-md">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                        Hi! I'm <span className="text-blue-400">Jayprakash Malik</span>.
+                    </h1>
 
-                <h3 className="text-lg md:text-2xl mt-4 text-gray-300 font-medium">
-                    A <span className="text-blue-300 font-semibold">{professionText}</span>
-                    <span className="animate-pulse">|</span>
-                </h3>
+                    <h3 className="text-base sm:text-lg md:text-2xl mt-2 text-gray-300 font-medium">
+                        A <span className="text-blue-300 font-semibold">{professionText}</span>
+                        <span className="animate-pulse">|</span>
+                    </h3>
 
-                <p className="mt-4 text-gray-400 text-sm md:text-base">
-                    I'm a 3rd-year student at  
-                    <a 
-                        href="https://presidencyuniversity.in/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:underline hover:text-blue-300 transition"
+                    <p className="mt-4 text-gray-400 text-sm sm:text-base px-2 sm:px-6">
+                        I'm a 3rd-year student at 
+                        <a 
+                            href="https://presidencyuniversity.in/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-400 hover:underline hover:text-blue-300 transition"
+                        >
+                            {" "}Presidency University
+                        </a>, Bengaluru.
+                    </p>
+
+                    <button 
+                        onClick={handleDownload} 
+                        className="mt-6 px-6 py-3 bg-blue-500/50 backdrop-blur-lg text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600/50 transition duration-300"
                     >
-                        {" "}Presidency University
-                    </a>, Bengaluru.
-                </p>
-
-                <button 
-                    onClick={handleDownload} 
-                    className="mt-6 px-6 py-3 bg-blue-500/50 backdrop-blur-lg text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600/50 transition duration-300"
-                >
-                    Download Resume
-                </button>
+                        Download Resume
+                    </button>
+                </div>
             </FadeIn>
         </section>
     );
