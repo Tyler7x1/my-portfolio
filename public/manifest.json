@@ -1,0 +1,23 @@
+{
+    "name": "Jayprakash Malik | Backend Developer",
+    "short_name": "Jayprakash Malik",
+    "description": "Portfolio of Jayprakash Malik, a Backend Developer specialized in Node.js, Express.js, MongoDB, and React.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#2563eb",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/fav.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/fav.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
