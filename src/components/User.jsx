@@ -89,7 +89,7 @@ export default function User() {
 
                 <button 
                     onClick={handleDownload} 
-                    className="mt-6 px-6 py-3 bg-blue-500/50 dark:bg-blue-600/50 backdrop-blur-lg text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600/50 dark:hover:bg-blue-500/50 transition duration-300"
+                    className="mt-6 px-6 py-3 bg-blue-500/50 backdrop-blur-lg text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600/50 transition duration-300"
                 >
                     Download Resume
                 </button>
