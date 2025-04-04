@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 import FadeIn from "./FadeIn";
@@ -65,9 +64,26 @@ export default function Projects() {
     const [page, setPage] = useState(0);
     const [direction, setDirection] = useState(0);
     const [hoveredIndex, setHoveredIndex] = useState(null);
-    const projectsPerPage = 2;
+    const [projectsPerPage, setProjectsPerPage] = useState(2);
     const totalPages = Math.ceil(projects.length / projectsPerPage);
     const scrollIntervalRef = useRef(null);
+
+    // Handle responsive projects per page
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 640) {
+                setProjectsPerPage(1);
+            } else if (window.innerWidth < 1024) {
+                setProjectsPerPage(2);
+            } else {
+                setProjectsPerPage(3);
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const startAutoScroll = () => {
         scrollIntervalRef.current = setInterval(() => {
@@ -79,8 +95,7 @@ export default function Projects() {
     useEffect(() => {
         startAutoScroll();
         return () => clearInterval(scrollIntervalRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [totalPages]);
+    }, [totalPages, projectsPerPage]);
 
     const handleLeft = () => {
         setDirection(-1);
@@ -111,25 +126,33 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className="relative min-h-screen flex flex-col items-center justify-center pt-32 sm:pt-36 pb-16 px-4 sm:px-6 scroll-mt-20 transition-colors duration-300"
+            className="relative min-h-screen flex flex-col items-center justify-center pt-24 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8 scroll-mt-20 transition-colors duration-300"
         >
             <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30"></div>
 
-            <div className="relative z-10 max-w-6xl w-full">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-600 mb-6">
+            <div className="relative z-10 w-full max-w-4xl lg:max-w-6xl">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-blue-600 mb-6">
                     Projects
                 </h2>
 
-                <div className="flex justify-between items-center mb-4 px-4">
-                    <button onClick={handleLeft} className="cursor-pointer">
-                        <FaChevronLeft className="text-white text-xl hover:scale-110 transition" />
+                <div className="flex justify-between items-center mb-4 px-2 sm:px-4">
+                    <button 
+                        onClick={handleLeft} 
+                        className="cursor-pointer p-2 sm:p-0"
+                        aria-label="Previous projects"
+                    >
+                        <FaChevronLeft className="text-white text-xl sm:text-2xl hover:scale-110 transition" />
                     </button>
-                    <button onClick={handleRight} className="cursor-pointer">
-                        <FaChevronRight className="text-white text-xl hover:scale-110 transition" />
+                    <button 
+                        onClick={handleRight} 
+                        className="cursor-pointer p-2 sm:p-0"
+                        aria-label="Next projects"
+                    >
+                        <FaChevronRight className="text-white text-xl sm:text-2xl hover:scale-110 transition" />
                     </button>
                 </div>
 
-                <div {...swipeHandlers} className="relative overflow-hidden min-h-[500px] px-2">
+                <div {...swipeHandlers} className="relative overflow-hidden min-h-[400px] sm:min-h-[500px] px-1 sm:px-2">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={page}
@@ -137,13 +160,13 @@ export default function Projects() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
                             transition={{ duration: 0.5 }}
-                            className="flex flex-wrap justify-center items-stretch gap-6"
+                            className="flex flex-wrap justify-center items-stretch gap-4 sm:gap-6"
                         >
                             {currentProjects.map((project, i) => {
                                 const isHovered = hoveredIndex === i;
 
                                 return (
-                                    <FadeIn key={project.name}>
+                                    <FadeIn key={`${project.name}-${page}`}>
                                         <div
                                             onMouseEnter={() => {
                                                 setHoveredIndex(i);
@@ -153,7 +176,7 @@ export default function Projects() {
                                                 setHoveredIndex(null);
                                                 startAutoScroll();
                                             }}
-                                            className="bg-gray-800/30 backdrop-blur-lg rounded-2xl shadow-lg p-0 hover:shadow-2xl transition duration-300 relative flex flex-col w-full max-w-sm mx-auto h-[400px] overflow-hidden"
+                                            className="bg-gray-800/30 backdrop-blur-lg rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition duration-300 relative flex flex-col w-full max-w-xs sm:max-w-sm mx-auto h-[350px] sm:h-[400px] overflow-hidden"
                                         >
                                             <AnimatePresence mode="wait">
                                                 {!isHovered ? (
@@ -167,7 +190,8 @@ export default function Projects() {
                                                         <img
                                                             src={project.image}
                                                             alt={project.name}
-                                                            className="w-full h-full object-cover rounded-2xl"
+                                                            className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
+                                                            loading="lazy"
                                                         />
                                                     </motion.div>
                                                 ) : (
@@ -176,19 +200,21 @@ export default function Projects() {
                                                         initial={{ opacity: 0 }}
                                                         animate={{ opacity: 1 }}
                                                         exit={{ opacity: 0 }}
-                                                        className="p-6 flex flex-col justify-between h-full"
+                                                        className="p-4 sm:p-6 flex flex-col justify-between h-full"
                                                     >
                                                         {!project.completed && (
                                                             <span className="absolute top-2 right-2 bg-yellow-500 text-gray-900 text-xs font-bold px-2 py-0.5 rounded">
                                                                 🚧 In Progress
                                                             </span>
                                                         )}
-                                                        <h3 className="text-2xl font-semibold text-white mb-3">{project.name}</h3>
-                                                        <p className="text-gray-300 text-sm mb-4">{project.description}</p>
+                                                        <div>
+                                                            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2 sm:mb-3">{project.name}</h3>
+                                                            <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4">{project.description}</p>
+                                                        </div>
 
                                                         <div className="mt-auto">
-                                                            <h4 className="text-sm font-semibold text-gray-400 mb-2">Technologies:</h4>
-                                                            <div className="flex flex-wrap gap-3">
+                                                            <h4 className="text-xs sm:text-sm font-semibold text-gray-400 mb-1 sm:mb-2">Technologies:</h4>
+                                                            <div className="flex flex-wrap gap-2 sm:gap-3">
                                                                 {project.technologies.map((tech, i) => (
                                                                     <div key={i} title={tech}>
                                                                         {techIcons[tech] || <span className="text-xs">{tech}</span>}
@@ -201,7 +227,7 @@ export default function Projects() {
                                                             href={project.repo}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            className="mt-4 text-blue-400 hover:text-blue-300 hover:underline transition text-sm"
+                                                            className="mt-3 sm:mt-4 text-blue-400 hover:text-blue-300 hover:underline transition text-xs sm:text-sm"
                                                         >
                                                             View Repository →
                                                         </a>
@@ -216,7 +242,7 @@ export default function Projects() {
                     </AnimatePresence>
                 </div>
 
-                <div className="flex justify-center gap-2 mt-6">
+                <div className="flex justify-center gap-2 mt-4 sm:mt-6">
                     {Array.from({ length: totalPages }).map((_, i) => (
                         <button
                             key={i}
@@ -225,7 +251,8 @@ export default function Projects() {
                                 setPage(i);
                             }}
                             className={`h-2 w-2 rounded-full transition-all duration-300 cursor-pointer ${page === i ? 'bg-blue-500 scale-110' : 'bg-gray-500'}`}
-                        ></button>
+                            aria-label={`Go to project page ${i + 1}`}
+                        />
                     ))}
                 </div>
             </div>
