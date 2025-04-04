@@ -1,9 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 export default function Contact() {
     return (
         <section
-            id="contact"
             className="relative flex flex-col justify-center items-center min-h-screen text-white text-center px-6 transition-colors duration-300"
         >
             {/* Blurred Glass Background */}

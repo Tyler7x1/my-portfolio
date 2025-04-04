@@ -87,7 +87,7 @@ export default function Projects() {
     }, [smoothAutoScroll]);
 
     return (
-        <section id="projects" className="relative min-h-screen flex flex-col items-center justify-center py-16 px-6 transition-colors duration-300">
+        <section className="relative min-h-screen flex flex-col items-center justify-center py-16 px-6 transition-colors duration-300">
             <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30 dark:bg-gray-900/30"></div>
 
             <div className="relative z-10 max-w-7xl w-full">

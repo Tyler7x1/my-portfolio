@@ -62,7 +62,6 @@ export default function User() {
 
     return (
         <section 
-            id="home" 
             className="relative flex flex-col items-center justify-center min-h-screen text-white text-center px-6 transition-colors duration-300"
         >
             <FadeIn>

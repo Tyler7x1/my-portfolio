@@ -2,8 +2,7 @@ import FadeIn from './FadeIn.jsx';
 
 export default function About() {
     return (
-        <section 
-            id="about" 
+        <section  
             className="relative flex flex-col items-center justify-center min-h-screen text-white text-center px-6 transition-colors duration-300"
         >
             {/* Blurred Glass Background */}
