@@ -1,7 +1,11 @@
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 py-4 text-center transition-colors duration-300">
-            <div className="container mx-auto">
+        <footer className="relative flex items-center justify-center py-4 text-center text-white dark:text-gray-900 transition-colors duration-300">
+            {/* Blurred Glass Background */}
+            <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30 dark:bg-gray-900/30"></div>
+
+            {/* Content */}
+            <div className="relative z-10">
                 <p className="text-sm md:text-base">
                     Created by <span className="font-semibold text-blue-400 dark:text-blue-600">Jayprakash Malik</span>
                 </p>

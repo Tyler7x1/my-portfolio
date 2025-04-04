@@ -1,0 +1,81 @@
+/* navbar.css */
+@keyframes riptideWave1 {
+    0% {
+        background-position: -300% 0;
+    }
+    100% {
+        background-position: 300% 0;
+    }
+}
+
+@keyframes riptideWave2 {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes riptideWave3 {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.navbar {
+    position: relative;
+    background-color: rgba(70, 69, 69, 0.8); /* Dark background for navbar */
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    overflow: hidden; /* Hide the overflow to keep waves within navbar bounds */
+    color: white;
+    font-size: 1rem;
+}
+
+.navbar::before,
+.navbar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(50, 50, 50, 0.2), rgba(0, 0, 0, 0.4));
+    background-size: 400% 100%;
+    z-index: -1; /* Make sure the wave is behind content */
+}
+
+.navbar::before {
+    animation: riptideWave1 5s linear infinite; /* First wave with slow movement */
+}
+
+.navbar::after {
+    animation: riptideWave2 3s linear infinite; /* Second wave with medium speed */
+}
+
+.navbar .wave-fast {
+    animation: riptideWave3 2s linear infinite; /* Fast wave at the top */
+}
+
+.navbar ul {
+    position: relative;
+    z-index: 10;
+    display: flex;
+}
+
+.navbar a {
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

@@ -28,9 +28,16 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="min-h-screen bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 flex flex-col justify-center items-center transition-colors duration-300">
-            <div className="w-full max-w-lg p-8 bg-gray-800 dark:bg-white rounded-lg shadow-lg transition-colors duration-300">
-                <h2 className="text-3xl font-bold text-center text-blue-400 dark:text-blue-600">Let's Connect</h2>
+        <section
+            id="contact"
+            className="relative flex flex-col justify-center items-center min-h-screen text-white text-center px-6 transition-colors duration-300"
+        >
+            {/* Blurred Glass Background */}
+            <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30 dark:bg-gray-900/30"></div>
+
+            {/* Content */}
+            <div className="relative z-10 w-full max-w-lg p-8 bg-gray-900/50 dark:bg-white/50 rounded-lg shadow-lg backdrop-blur-lg">
+                <h2 className="text-3xl font-bold text-blue-400 dark:text-blue-600">Let's Connect</h2>
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                     <input
                         type="text"
@@ -61,11 +68,12 @@ export default function Contact() {
                     ></textarea>
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white dark:text-white font-bold py-3 rounded transition"
+                        className="w-full bg-blue-500/50 dark:bg-blue-600/50 backdrop-blur-lg text-white font-bold py-3 rounded transition duration-300 hover:bg-blue-600/50 dark:hover:bg-blue-500/50"
                         disabled={status === "sending"}
                     >
                         {status === "sending" ? "Sending..." : "Send Message"}
                     </button>
+
                 </form>
 
                 {status === "success" && <p className="text-green-400 text-center mt-4">Message sent successfully!</p>}
@@ -73,7 +81,7 @@ export default function Contact() {
             </div>
 
             {/* Social Links Section */}
-            <div className="mt-8 flex space-x-6">
+            <div className="relative z-10 mt-8 flex space-x-6">
                 <a href="https://github.com/Tyler7x1" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition text-2xl">
                     <i className="fa-brands fa-github"></i>
                 </a>
