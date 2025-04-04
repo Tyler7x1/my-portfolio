@@ -1,4 +1,4 @@
-import FadeIn from './FadeIn.jsx';
+import FadeIn from '../components/FadeIn.jsx';
 
 export default function About() {
     return (

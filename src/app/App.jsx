@@ -10,7 +10,7 @@ import {
     Contact,
     Footer,
     NotFound
-  } from "../components/components.js";
+  } from "../components/js/components.js";
 
 export default function App() {
     return (

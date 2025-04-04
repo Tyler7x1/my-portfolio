@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import FadeIn from "./FadeIn";
+import FadeIn from "../components/FadeIn";
 
 export default function User() {
     const [professionText, setProfessionText] = useState('');
