@@ -8,7 +8,7 @@ import {
 } from 'react-icons/si';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-import empManageImage from '../assets/echorelay.png';
+import empManageImage from '../assets/EmpManage.png';
 import floodSenseImage from '../assets/FloodSense.png';
 import metaBucketImage from '../assets/MetaBucket.png';
 import echoRelayImage from '../assets/echorelay.png';
