@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 import FadeIn from "./FadeIn";
@@ -7,6 +8,11 @@ import {
     SiGoogledrive, SiAxios, SiTailwindcss, SiSocketdotio
 } from 'react-icons/si';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
+import empManageImage from '../assets/echorelay.png';
+import floodSenseImage from '../assets/FloodSense.png';
+import metaBucketImage from '../assets/MetaBucket.png';
+import echoRelayImage from '../assets/echorelay.png';
 
 const techIcons = {
     "Node.js": <SiNodedotjs title="Node.js" className="text-green-500 text-2xl" />,
@@ -26,6 +32,7 @@ const projects = [
         description: "Basic CRUD API with MongoDB connection that allows for the creation, retrieval, update, and deletion of user accounts.",
         technologies: ["Node.js", "Express.js", "MongoDB", "EJS"],
         repo: "https://github.com/Tyler7x1/EmpManage",
+        image: empManageImage,
         completed: true
     },
     {
@@ -33,6 +40,7 @@ const projects = [
         description: "A MERN web app that displays real-time IoT sensor data.",
         technologies: ["Node.js", "Express.js", "MongoDB", "EJS", "Arduino (C++)"],
         repo: "https://github.com/Tyler7x1/FloodSense",
+        image: floodSenseImage,
         completed: true
     },
     {
@@ -40,6 +48,7 @@ const projects = [
         description: "A Node.js application that routes file uploads to the Google Drive account.",
         technologies: ["Node.js", "Express.js", "MongoDB", "EJS", "Google Drive API", "Axios"],
         repo: "https://github.com/Soujanya2004/Google-Cloud-Storage/tree/jay",
+        image: metaBucketImage,
         completed: true
     },
     {
@@ -47,6 +56,7 @@ const projects = [
         description: "File sharing web app with storage connecting to multiple Google Drive APIs.",
         technologies: ["Node.js", "Express.js", "MongoDB", "EJS", "Tailwind CSS", "Google Drive API", "Axios", "WebSocket"],
         repo: "https://github.com/theoneandonlyshadow/Echo-Relay",
+        image: echoRelayImage,
         completed: false
     }
 ];
@@ -54,15 +64,22 @@ const projects = [
 export default function Projects() {
     const [page, setPage] = useState(0);
     const [direction, setDirection] = useState(0);
+    const [hoveredIndex, setHoveredIndex] = useState(null);
     const projectsPerPage = 2;
     const totalPages = Math.ceil(projects.length / projectsPerPage);
+    const scrollIntervalRef = useRef(null);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
+    const startAutoScroll = () => {
+        scrollIntervalRef.current = setInterval(() => {
             setDirection(1);
             setPage((prev) => (prev + 1) % totalPages);
         }, 5000);
-        return () => clearInterval(interval);
+    };
+
+    useEffect(() => {
+        startAutoScroll();
+        return () => clearInterval(scrollIntervalRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [totalPages]);
 
     const handleLeft = () => {
@@ -100,10 +117,9 @@ export default function Projects() {
 
             <div className="relative z-10 max-w-6xl w-full">
                 <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-600 mb-6">
-                    My Projects
+                    Projects
                 </h2>
 
-                {/* Controls */}
                 <div className="flex justify-between items-center mb-4 px-4">
                     <button onClick={handleLeft} className="cursor-pointer">
                         <FaChevronLeft className="text-white text-xl hover:scale-110 transition" />
@@ -113,8 +129,7 @@ export default function Projects() {
                     </button>
                 </div>
 
-                {/* Carousel */}
-                <div {...swipeHandlers} className="relative overflow-hidden min-h-[350px] px-2">
+                <div {...swipeHandlers} className="relative overflow-hidden min-h-[500px] px-2">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={page}
@@ -124,52 +139,83 @@ export default function Projects() {
                             transition={{ duration: 0.5 }}
                             className="flex flex-wrap justify-center items-stretch gap-6"
                         >
-                            {currentProjects.map((project) => (
-                                <FadeIn key={project.name}>
-                                    <div className="bg-gray-800/30 backdrop-blur-lg rounded-2xl shadow-lg p-6 hover:shadow-2xl transition duration-300 relative flex flex-col w-full max-w-sm mx-auto min-h-[400px]">
-                                        {!project.completed && (
-                                            <span className="absolute top-2 right-2 bg-yellow-500 text-gray-900 text-xs font-bold px-2 py-0.5 rounded">
-                                                🚧 In Progress
-                                            </span>
-                                        )}
+                            {currentProjects.map((project, i) => {
+                                const isHovered = hoveredIndex === i;
 
-                                        <h3 className="text-2xl font-semibold text-white mb-3">
-                                            {project.name}
-                                        </h3>
-
-                                        <p className="text-gray-300 text-sm mb-4 whitespace-normal break-words flex-grow">
-                                            {project.description}
-                                        </p>
-
-                                        <div className="mt-auto">
-                                            <h4 className="text-sm font-semibold text-gray-400 mb-2">
-                                                Technologies Used:
-                                            </h4>
-                                            <div className="flex flex-wrap gap-3">
-                                                {project.technologies.map((tech, i) => (
-                                                    <div key={i} title={tech}>
-                                                        {techIcons[tech] || <span className="text-xs">{tech}</span>}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <a
-                                            href={project.repo}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="mt-4 text-blue-400 hover:text-blue-300 hover:underline transition text-sm"
+                                return (
+                                    <FadeIn key={project.name}>
+                                        <div
+                                            onMouseEnter={() => {
+                                                setHoveredIndex(i);
+                                                clearInterval(scrollIntervalRef.current);
+                                            }}
+                                            onMouseLeave={() => {
+                                                setHoveredIndex(null);
+                                                startAutoScroll();
+                                            }}
+                                            className="bg-gray-800/30 backdrop-blur-lg rounded-2xl shadow-lg p-0 hover:shadow-2xl transition duration-300 relative flex flex-col w-full max-w-sm mx-auto h-[400px] overflow-hidden"
                                         >
-                                            View Repository →
-                                        </a>
-                                    </div>
-                                </FadeIn>
-                            ))}
+                                            <AnimatePresence mode="wait">
+                                                {!isHovered ? (
+                                                    <motion.div
+                                                        key="image-container"
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        exit={{ opacity: 0 }}
+                                                        className="w-full h-full"
+                                                    >
+                                                        <img
+                                                            src={project.image}
+                                                            alt={project.name}
+                                                            className="w-full h-full object-cover rounded-2xl"
+                                                        />
+                                                    </motion.div>
+                                                ) : (
+                                                    <motion.div
+                                                        key="details"
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        exit={{ opacity: 0 }}
+                                                        className="p-6 flex flex-col justify-between h-full"
+                                                    >
+                                                        {!project.completed && (
+                                                            <span className="absolute top-2 right-2 bg-yellow-500 text-gray-900 text-xs font-bold px-2 py-0.5 rounded">
+                                                                🚧 In Progress
+                                                            </span>
+                                                        )}
+                                                        <h3 className="text-2xl font-semibold text-white mb-3">{project.name}</h3>
+                                                        <p className="text-gray-300 text-sm mb-4">{project.description}</p>
+
+                                                        <div className="mt-auto">
+                                                            <h4 className="text-sm font-semibold text-gray-400 mb-2">Technologies:</h4>
+                                                            <div className="flex flex-wrap gap-3">
+                                                                {project.technologies.map((tech, i) => (
+                                                                    <div key={i} title={tech}>
+                                                                        {techIcons[tech] || <span className="text-xs">{tech}</span>}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+
+                                                        <a
+                                                            href={project.repo}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="mt-4 text-blue-400 hover:text-blue-300 hover:underline transition text-sm"
+                                                        >
+                                                            View Repository →
+                                                        </a>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    </FadeIn>
+                                );
+                            })}
                         </motion.div>
                     </AnimatePresence>
                 </div>
 
-                {/* Pagination Dots */}
                 <div className="flex justify-center gap-2 mt-6">
                     {Array.from({ length: totalPages }).map((_, i) => (
                         <button
