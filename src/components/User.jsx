@@ -47,7 +47,7 @@ export default function User() {
         const resumeUrl = "/Jayprakash_Malik.pdf";
         const link = document.createElement("a");
         link.href = resumeUrl;
-        link.download = "Jayprakash_Malik_Resume.pdf";
+        link.setAttribute("download", "Jayprakash_Malik_Resume.pdf");
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
