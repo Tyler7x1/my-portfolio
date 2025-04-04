@@ -120,11 +120,11 @@ export default function Projects() {
                                             {project.name}
                                         </h3>
 
-                                        <p className="text-gray-300 text-xs sm:text-sm flex-grow">
+                                        <p className="text-gray-300 text-xs sm:text-sm mb-3 whitespace-normal break-words">
                                             {project.description}
                                         </p>
 
-                                        <div className="mt-3 sm:mt-4">
+                                        <div className="mt-auto">
                                             <h4 className="text-xs sm:text-sm font-semibold text-gray-400 mb-1 sm:mb-2">
                                                 Technologies Used:
                                             </h4>
@@ -143,7 +143,7 @@ export default function Projects() {
                                             href={project.repo}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="mt-3 sm:mt-4 inline-block text-blue-400 hover:text-blue-300 hover:underline transition text-xs sm:text-sm"
+                                            className="mt-4 text-blue-400 hover:text-blue-300 hover:underline transition text-xs sm:text-sm"
                                         >
                                             View Repository →
                                         </a>
