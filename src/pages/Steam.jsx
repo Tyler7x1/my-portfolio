@@ -63,7 +63,7 @@ const Steam = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://tylers-backend.onrender.com/steam');
+        const response = await axios.get('https://tylers-backend.onrender.com/steam');
         setProfile(response.data);
       } catch (err) {
         console.error('Error fetching Steam profile:', err);

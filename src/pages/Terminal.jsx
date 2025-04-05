@@ -1,9 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Terminal from 'react-console-emulator';
+import { useAuth } from '../components/authContext';
 
 export default function MyTerminal() {
   const navigate = useNavigate();
+  const { setIsUnlocked } = useAuth();
   const commands = {
     echo: {
       description: 'Echo a passed string.',
@@ -59,6 +61,7 @@ export default function MyTerminal() {
       description: '???',
       usage: 'unlock',
       fn: () => {
+        setIsUnlocked(true);
         setTimeout(() => {
           navigate('/steam', { state: { fromTerminal: true } });
         }, 100);

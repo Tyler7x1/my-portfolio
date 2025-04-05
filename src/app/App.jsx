@@ -30,8 +30,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/terminal" element={<Terminal />} />
             <Route path="/contact" element={<Contact />} />
-
-            <Route 
+            <Route
               path="/steam"
               element={
                 <ProtectedSteamRoute>
@@ -39,9 +38,14 @@ export default function App() {
                 </ProtectedSteamRoute>
               }
             />
-
-            <Route path="/steam/library" element={<SteamLibrary />} />
-
+            <Route
+              path="/steam/library"
+              element={
+                <ProtectedSteamRoute>
+                  <SteamLibrary />
+                </ProtectedSteamRoute>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

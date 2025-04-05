@@ -1,12 +1,13 @@
 import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from './authContext.jsx';
+import NotFound from '../pages/404.jsx';
 
-const ProtectedSteamRoute = ({ children }) => {
-  const location = useLocation();
+export default function ProtectedSteamRoute({ children }) {
+  const { isUnlocked } = useAuth();
 
-  const allowed = location.state?.fromTerminal === true;
+  if (!isUnlocked) {
+    return <NotFound />;
+  }
 
-  return allowed ? children : <Navigate to="/" replace />;
-};
-
-export default ProtectedSteamRoute;
+  return children;
+}

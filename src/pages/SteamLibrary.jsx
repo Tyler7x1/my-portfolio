@@ -24,7 +24,7 @@ const SteamLibrary = () => {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const res = await axios.get('http://tylers-backend.onrender.com/steam/library');
+        const res = await axios.get('https://tylers-backend.onrender.com/steam/library');
         const unique = Array.from(new Map(res.data.response?.games?.map(g => [g.appid, g])).values());
         setGames(unique);
         setVisibleGames(unique.slice(0, CARDS_PER_LOAD));
