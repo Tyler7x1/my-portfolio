@@ -9,7 +9,6 @@ Welcome to the source code for my **developer portfolio website**, built using *
 - 🎥 Framer Motion (for smooth animations)
 - 🔍 React Intersection Observer (scroll-based animations)
 - 📦 React Router DOM (for navigation)
-- 📄 Helmet (for SEO)
 - 🎨 Lucide Icons
 
 ## 🖥️ Features
@@ -20,7 +19,7 @@ Welcome to the source code for my **developer portfolio website**, built using *
 - 📂 **Dynamic Projects section** – scrolls automatically and shows details on hover
 - 📄 **Resume download** functionality
 - 🧠 Profession typing effect that cycles through different roles
-- 🌐 SEO optimized (helmet, manifest, sitemap, robots.txt)
+- 🌐 SEO optimized (manifest, sitemap, robots.txt)
 - 🔗 Clean URLs using React Router
 
 ## 🛠️ Setup & Run Locally

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Terminal from 'react-console-emulator';
 
 export default function MyTerminal() {
+  const navigate = useNavigate();
   const commands = {
     echo: {
       description: 'Echo a passed string.',
@@ -43,6 +45,24 @@ export default function MyTerminal() {
       fn: () => {
         setTimeout(() => window.open('https://jayprakash-malik.vercel.app', '_blank'), 100);
         return 'Opening Portfolio...';
+      }
+    },
+    steam: {
+      description: 'Opens Steam Profile',
+      usage: 'steam',
+      fn: () => {
+        setTimeout(() => window.open('https://steamcommunity.com/profiles/76561199107166579/', '_blank'), 100);
+        return 'Opening Steam Profile...';
+      }
+    },
+    unlock: {
+      description: '???',
+      usage: 'unlock',
+      fn: () => {
+        setTimeout(() => {
+          navigate('/steam', { state: { fromTerminal: true } });
+        }, 100);
+        return 'Launching something cool...';
       }
     },
     skills: {

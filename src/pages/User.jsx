@@ -81,7 +81,7 @@ export default function User() {
                     </p>
 
                     <p className="mt-6 text-gray-300 text-sm sm:text-base px-2 sm:px-6">
-                        If you're a fellow backend developer, check out the{" "}
+                        If you're a developer, check out the{" "}
                         <span className="text-blue-400 font-semibold">Terminal</span> Section and type <code className="bg-gray-800 text-yellow-300 px-1 rounded">help</code> to get started.
                     </p>
 
