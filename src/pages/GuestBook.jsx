@@ -30,7 +30,7 @@ export default function GuestBook() {
 
     const fetchMessages = async () => {
       try {
-        const res = await fetch("http://tylers-backend.onrender.com/guestbook");
+        const res = await fetch("https://tylers-backend.onrender.com/guestbook");
         const data = await res.json();
         setEntries(data);
       } catch (err) {
@@ -56,7 +56,7 @@ export default function GuestBook() {
     if (!message.trim()) return;
 
     try {
-      const res = await fetch("http://tylers-backend.onrender.com/guestbook", {
+      const res = await fetch("https://tylers-backend.onrender.com/guestbook", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export default function GuestBook() {
 
       if (res.ok) {
         setMessage("");
-        const updated = await fetch("http://tylers-backend.onrender.com/guestbook");
+        const updated = await fetch("https://tylers-backend.onrender.com/guestbook");
         const data = await updated.json();
         setEntries(data);
       } else {
@@ -79,7 +79,7 @@ export default function GuestBook() {
   };
 
   const loginWithGitHub = () => {
-    window.location.href = "http://tylers-backend.onrender.com/auth/github";
+    window.location.href = "https://tylers-backend.onrender.com/auth/github";
   };
 
   const logout = () => {
