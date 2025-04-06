@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dialog } from '@headlessui/react';
 
-const fallbackImage = '/fallback.jpg';
+const fallbackImage = '/fallback.png';
 
 const GameModal = ({ game, onClose }) => (
   <Dialog open={!!game} onClose={onClose} className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">

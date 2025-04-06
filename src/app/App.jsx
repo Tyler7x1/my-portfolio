@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedSteamRoute from '../components/ProtectedSteamRoute';
+import GuestBook from "../pages/GuestBook";
 
 import {
   VideoBackground,
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/" element={<User />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/guestbook" element={<GuestBook />} />
             <Route path="/terminal" element={<Terminal />} />
             <Route path="/contact" element={<Contact />} />
             <Route

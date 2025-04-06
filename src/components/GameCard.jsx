@@ -3,7 +3,7 @@ import { Clock } from 'lucide-react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 
-const fallbackImage = '/fallback.jpg';
+const fallbackImage = '/fallback.png';
 
 const GameCard = ({ game, onClick, onHoverStart, onHoverEnd }) => (
   <motion.div

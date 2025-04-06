@@ -34,7 +34,7 @@ export default function Header() {
         };
     }, [isMobileMenuOpen]);
 
-    const navItems = ["home", "about", "projects", "terminal", "contact"];
+    const navItems = ["home", "about", "projects", "guestbook", "terminal", "contact"];
 
     return (
         <>
