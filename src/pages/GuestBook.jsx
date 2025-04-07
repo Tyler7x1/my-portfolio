@@ -88,16 +88,15 @@ export default function GuestBook() {
   };
 
   return (
-    <section className="relative flex flex-col justify-start items-center min-h-screen text-white text-center px-4 sm:px-6 md:px-10">
-      <video autoPlay loop muted playsInline className="fixed inset-0 z-0 w-full h-full object-cover">
-        <source src="/your-background-video.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-md z-0" />
-
-      <div className="relative z-10 w-full max-w-4xl mt-24 p-6 sm:p-10 md:p-12 bg-white/10 border border-white/20 rounded-2xl shadow-2xl backdrop-blur-lg">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-500 text-center mb-4">📖 GuestBook</h1>
-        <p className="text-center text-gray-300 text-sm mb-8">Leave a message for Jayprakash</p>
-
+    <section className="relative flex flex-col justify-start items-center min-h-screen text-white text-center px-4 sm:px-6 md:px-10 bg-gradient-to-br from-black to-blue-900 transition-colors duration-300">
+      <div className="w-full max-w-4xl mt-20 sm:mt-24 p-5 sm:p-8 md:p-12 bg-white/5 border border-white/10 rounded-2xl shadow-2xl backdrop-blur-lg">
+        <h1 className="text-[clamp(2rem,4vw,3rem)] font-extrabold text-center mb-4 text-blue-400">
+          📖 GuestBook
+        </h1>
+        <p className="text-center text-gray-300 text-sm sm:text-base mb-8">
+          Leave a message for Jayprakash
+        </p>
+  
         {isAuthenticated && user ? (
           <>
             <UserHeader user={user} onLogout={logout} />
@@ -107,8 +106,10 @@ export default function GuestBook() {
           <LoginPrompt showLogin={showLogin} setShowLogin={setShowLogin} loginWithGitHub={loginWithGitHub} />
         )}
       </div>
-
-      <GuestbookEntries entries={entries} formatDate={formatDate} />
+  
+      <div className="w-full max-w-4xl mt-10 px-2 sm:px-4">
+        <GuestbookEntries entries={entries} formatDate={formatDate} />
+      </div>
     </section>
-  );
+  );  
 }

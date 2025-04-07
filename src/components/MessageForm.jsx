@@ -13,7 +13,7 @@ export default function MessageForm({ message, setMessage, onSubmit }) {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 transition font-semibold py-2 rounded-lg shadow-md mx-auto block pl-4 pr-4"
+          className="bg-blue-500 hover:bg-blue-600 transition font-semibold py-2 rounded-lg shadow-md mx-auto block pl-4 pr-4 cursor-pointer"
         >
           Post Comment
         </button>

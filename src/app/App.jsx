@@ -4,10 +4,9 @@ import ProtectedSteamRoute from '../components/ProtectedSteamRoute';
 import GuestBook from "../pages/GuestBook";
 
 import {
-  VideoBackground,
   Header,
   User,
-  About,
+  Portfolio,
   Projects,
   Terminal,
   Contact,
@@ -22,12 +21,11 @@ export default function App() {
   return (
     <Router>
       <div className="relative">
-        <VideoBackground />
         <div className="relative z-10">
           <Header />
           <Routes>
             <Route path="/" element={<User />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/guestbook" element={<GuestBook />} />
             <Route path="/terminal" element={<Terminal />} />

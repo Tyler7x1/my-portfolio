@@ -6,7 +6,7 @@ export default function LoginPrompt({ showLogin, setShowLogin, loginWithGitHub }
     <div className="text-center">
       {!showLogin ? (
         <button
-          className="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-lg font-medium"
+          className="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-lg font-medium cursor-pointer"
           onClick={() => setShowLogin(true)}
         >
           Login to Comment
@@ -24,7 +24,7 @@ export default function LoginPrompt({ showLogin, setShowLogin, loginWithGitHub }
             <p className="text-gray-400">Continue with GitHub:</p>
             <div className="flex justify-center">
               <button
-                className="flex items-center gap-2 px-4 py-2 bg-[#333] text-white rounded-lg shadow hover:scale-105 transition"
+                className="flex items-center gap-2 px-4 py-2 bg-[#333] text-white rounded-lg shadow hover:scale-105 transition cursor-pointer"
                 onClick={loginWithGitHub}
               >
                 <Github className="w-5 h-5" />
@@ -32,10 +32,10 @@ export default function LoginPrompt({ showLogin, setShowLogin, loginWithGitHub }
               </button>
             </div>
             <button
-              className="text-sm text-gray-400 underline mt-2"
+              className="text-sm text-gray-400 underline mt-2 cursor-pointer"
               onClick={() => setShowLogin(false)}
             >
-              Nevermind, go back
+              Never mind, go back
             </button>
           </motion.div>
         </AnimatePresence>

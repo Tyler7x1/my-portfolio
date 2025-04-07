@@ -100,7 +100,7 @@ export default function MyTerminal() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-black/90 p-4">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-blue-900 p-4">
       <div className="w-full max-w-3xl bg-white/5 backdrop-blur-md p-4 md:p-6 rounded-lg md:rounded-2xl shadow-xl border border-white/10">
         <Terminal
           key="terminal-instance"

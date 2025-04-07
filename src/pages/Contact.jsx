@@ -6,7 +6,7 @@ export default function Contact() {
         <section
             className="relative flex flex-col justify-center items-center min-h-screen text-white text-center px-4 sm:px-6 md:px-10 transition-colors duration-300"
         >
-            <div className="absolute inset-0 backdrop-blur-lg bg-gray-900/30"></div>
+            <div className="absolute inset-0 backdrop-blur-lg bg-gradient-to-br from-black to-blue-900"></div>
 
             <div className="relative z-10 w-full max-w-4xl p-6 sm:p-10 md:p-12 bg-gray-900/50 rounded-2xl shadow-2xl backdrop-blur-lg flex flex-col items-center">
                 <h2 className="text-3xl sm:text-4xl font-bold text-blue-600">Let's Connect</h2>
