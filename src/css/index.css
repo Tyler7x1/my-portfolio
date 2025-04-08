@@ -4,21 +4,18 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Scrolling container */
 .scroll-container {
     overflow: hidden;
     position: relative;
     width: 100%;
 }
 
-/* Scroll content with smooth transitions */
 .scroll-content {
     display: flex;
     gap: 1.5rem;
     will-change: transform;
 }
 
-/* Project card styling - dynamic height */
 .project-card {
     flex: 0 0 auto;
     width: 400px;
@@ -26,3 +23,13 @@ html {
     display: flex;
     flex-direction: column;
 }
+
+@media (min-width: 768px) {
+    body {
+      cursor: none;
+    }
+  }
+
+  a, button, [role="button"], input, textarea, select {
+    cursor: none;
+  }

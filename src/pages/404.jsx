@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 export default function NotFound() {
     return (
         <section className="relative flex flex-col justify-center items-center min-h-screen text-white text-center px-4 sm:px-6 md:px-10 transition-colors duration-300">
-            {/* Blurred background */}
             <div className="absolute inset-0 backdrop-blur-lg bg-gradient-to-br from-black to-blue-900"></div>
 
-            {/* Foreground card */}
             <div className="relative z-10 w-full max-w-3xl p-6 sm:p-10 md:p-12 bg-gray-900/50 rounded-2xl shadow-2xl backdrop-blur-lg flex flex-col items-center space-y-4">
                 <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-blue-500">
                     404

@@ -56,8 +56,8 @@ export default function ProjectCarousel() {
   return (
     <>
       <div className="flex justify-between items-center mb-4 px-4">
-        <button onClick={handleLeft}><FaChevronLeft className="text-white text-2xl hover:scale-110 transition cursor-pointer" /></button>
-        <button onClick={handleRight}><FaChevronRight className="text-white text-2xl hover:scale-110 transition cursor-pointer" /></button>
+        <button onClick={handleLeft}><FaChevronLeft className="text-white text-2xl hover:scale-110 transition" /></button>
+        <button onClick={handleRight}><FaChevronRight className="text-white text-2xl hover:scale-110 transition" /></button>
       </div>
 
       <div {...swipeHandlers} className="relative overflow-hidden min-h-[400px] sm:min-h-[500px] px-2">
@@ -92,7 +92,7 @@ export default function ProjectCarousel() {
               setDirection(i > page ? 1 : -1);
               setPage(i);
             }}
-            className={`h-2 w-2 rounded-full ${page === i ? 'bg-blue-500 scale-110' : 'bg-gray-500'} transition cursor-pointer`}
+            className={`h-2 w-2 rounded-full ${page === i ? 'bg-blue-500 scale-110' : 'bg-gray-500'} transition`}
           />
         ))}
       </div>

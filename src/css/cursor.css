@@ -1,0 +1,38 @@
+.cursor {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 9999px;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    z-index: 9999;
+  }
+  
+  .cursor.click::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    border: 2px solid white;
+    border-radius: 9999px;
+    animation: ripple 0.4s ease-out;
+    opacity: 0.6;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(0.6);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.4);
+      opacity: 0;
+    }
+  }
+  

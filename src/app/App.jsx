@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedSteamRoute from '../components/ProtectedSteamRoute';
 import GuestBook from "../pages/GuestBook";
+import Cursor from "../components/Cursor.jsx";
 
 import {
   Header,
@@ -21,6 +22,7 @@ export default function App() {
   return (
     <Router>
       <div className="relative">
+      <Cursor />
         <div className="relative z-10">
           <Header />
           <Routes>

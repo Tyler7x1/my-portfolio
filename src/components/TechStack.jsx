@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import {
   FaNodeJs, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub,
@@ -38,7 +39,7 @@ export default function TechStack() {
         {Object.entries(categories).map(([category, stack]) => (
           <div key={category}>
             <h2 className={`text-3xl font-bold mb-6 text-center ${category === "Frontend" ? "text-cyan-400" : category === "Backend" ? "text-green-400" : "text-yellow-400"}`}>
-              {category} Technologies
+              {category}
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
               {stack.map((tech, index) => (
