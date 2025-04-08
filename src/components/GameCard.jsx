@@ -12,7 +12,7 @@ const GameCard = ({ game, onClick, onHoverStart, onHoverEnd }) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -10 }}
     transition={{ duration: 0.4 }}
-    className="w-full sm:w-[280px] md:w-[300px] bg-gradient-to-b from-[#1c1f26] to-[#2a475e] hover:from-[#2a475e] hover:to-[#1c1f26] rounded-lg p-4 shadow-lg cursor-pointer border border-[#66c0f4]/20 hover:border-[#66c0f4]/40 transition-all duration-300 hover:shadow-[#66c0f4]/20 hover:scale-[1.03]"
+    className="w-full sm:w-[280px] md:w-[300px] bg-gradient-to-b from-[#1c1f26] to-[#2a475e] hover:from-[#2a475e] hover:to-[#1c1f26] rounded-lg p-4 shadow-lg border border-[#66c0f4]/20 hover:border-[#66c0f4]/40 transition-all duration-300 hover:shadow-[#66c0f4]/20 hover:scale-[1.03]"
     onClick={() => onClick(game)}
     whileHover={{ y: -5 }}
     onMouseEnter={onHoverStart}
