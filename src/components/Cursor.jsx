@@ -28,7 +28,7 @@ export default function Cursor() {
     };
 
     const animate = () => {
-      const speed = 0.35;
+      const speed = 1;
       cursorPosition.current.x +=
         (mousePosition.current.x - cursorPosition.current.x) * speed;
       cursorPosition.current.y +=
